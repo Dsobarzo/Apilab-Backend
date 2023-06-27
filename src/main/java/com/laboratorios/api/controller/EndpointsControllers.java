@@ -24,7 +24,7 @@ public class EndpointsControllers {
         return "Server backend laboratorios responde";
 
     }
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(path = "/obtenerlaboratorios")
     public List<LaboratoriosModels> obtenerlaboratorio(){
 
