@@ -54,7 +54,7 @@ public class EndpointsControllers {
         return "Laboratorio:" + id + " Borrado con Exito!!" ;
     }
     //#################### EndPoint Carreras #############################
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(path = "/obtenercarreras")
     public List<CarrerasModels> obtenercarreras(){
         return carrerasRepository.findAll();
