@@ -2,8 +2,10 @@ package com.laboratorios.api.controller;
 
 import com.laboratorios.api.models.CarrerasModels;
 import com.laboratorios.api.models.LaboratoriosModels;
+import com.laboratorios.api.models.ProfesoresModels;
 import com.laboratorios.api.repository.CarrerasRepository;
 import com.laboratorios.api.repository.LaboratoriosRepository;
+import com.laboratorios.api.repository.ProfesoresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,9 @@ public class EndpointsControllers {
 
     @Autowired
     private CarrerasRepository carrerasRepository;
+
+    @Autowired
+    private ProfesoresRepository profesoresRepository;
 
     @GetMapping(path = "/api")
     public String estadoserver(){
@@ -79,6 +84,18 @@ public class EndpointsControllers {
         CarrerasModels borrado = carrerasRepository.findById(id).get();
         carrerasRepository.delete(borrado);
         return "Carrera:"+ id + "Borrada con Exito!!";
+    }
+
+    //############################# EndPoint Profesores ########################################
+    @GetMapping(path = "/obtenerprofesores")
+    public List<ProfesoresModels> obtenerprofesores(){
+        return profesoresRepository.findAll();
+    }
+
+    @PostMapping(path = "/guardarprofesor")
+    public String guardarprofesor(@RequestBody ProfesoresModels guardar){
+        profesoresRepository.save(guardar);
+        return "Profesor Guardado Con Exito!!!";
     }
 
 
