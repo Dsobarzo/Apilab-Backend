@@ -3,9 +3,11 @@ package com.laboratorios.api.controller;
 import com.laboratorios.api.models.CarrerasModels;
 import com.laboratorios.api.models.LaboratoriosModels;
 import com.laboratorios.api.models.ProfesoresModels;
+import com.laboratorios.api.models.ReservasModels;
 import com.laboratorios.api.repository.CarrerasRepository;
 import com.laboratorios.api.repository.LaboratoriosRepository;
 import com.laboratorios.api.repository.ProfesoresRepository;
+import com.laboratorios.api.repository.ReservasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +25,9 @@ public class EndpointsControllers {
 
     @Autowired
     private ProfesoresRepository profesoresRepository;
+
+    @Autowired
+    private ReservasRepository reservasRepository;
 
     @GetMapping(path = "/api")
     public String estadoserver(){
@@ -116,5 +121,16 @@ public class EndpointsControllers {
         return "Profesor:"+ id + "Borrada con Exito!!";
     }
 
+    //################################## EndPoint Reservas ###############################
+
+    @GetMapping(path = "/obtenerreservas")
+    public List<ReservasModels> obtenerreservas(){return reservasRepository.findAll();
+    }
+
+    @PostMapping(path = "/guardarreserva")
+    public String guardarreserva(@RequestBody ReservasModels guardar){
+        reservasRepository.save(guardar);
+        return "Reserva Guardada Con Exito!!!";
+    }
 
 }
