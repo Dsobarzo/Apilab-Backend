@@ -98,5 +98,23 @@ public class EndpointsControllers {
         return "Profesor Guardado Con Exito!!!";
     }
 
+    @PutMapping(path = "modificarprofesor/{id}")
+    public String modificarprofesor(@PathVariable long id, @RequestBody ProfesoresModels modificar){
+        ProfesoresModels modificado = profesoresRepository.findById(id).get();
+        modificado.setNombre(modificar.getNombre());
+        modificado.setApellido(modificar.getApellido());
+        modificado.setEmail(modificar.getEmail());
+        modificado.setId_carrera(modificar.getId_carrera());
+        profesoresRepository.save(modificado);
+        return "Profesor:"+ id +" Modificada con Exito!!!";
+    }
+
+    @DeleteMapping(path = "borrarprofesor/{id}")
+    public String borrarprofesor(@PathVariable long  id){
+        ProfesoresModels borrado = profesoresRepository.findById(id).get();
+        profesoresRepository.delete(borrado);
+        return "Profesor:"+ id + "Borrada con Exito!!";
+    }
+
 
 }
