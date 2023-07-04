@@ -21,10 +21,7 @@ public class ReservasModels {
     private Date fecha_reserva;
 
     @Column
-    private Time hora_inicio;
-
-    @Column
-    private Time hora_fin;
+    private String bloque;
 
     @Column
     private Boolean estado;
@@ -61,20 +58,12 @@ public class ReservasModels {
         this.fecha_reserva = fecha_reserva;
     }
 
-    public Time getHora_inicio() {
-        return hora_inicio;
+    public String getBloque() {
+        return bloque;
     }
 
-    public void setHora_inicio(Time hora_inicio) {
-        this.hora_inicio = hora_inicio;
-    }
-
-    public Time getHora_fin() {
-        return hora_fin;
-    }
-
-    public void setHora_fin(Time hora_fin) {
-        this.hora_fin = hora_fin;
+    public void setBloque(String bloque) {
+        this.bloque = bloque;
     }
 
     public Boolean getEstado() {

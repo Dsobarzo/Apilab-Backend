@@ -127,10 +127,10 @@ public class EndpointsControllers {
     public List<ReservasModels> obtenerreservas(){return reservasRepository.findAll();
     }
 
-    @PostMapping(path = "/guardarreserva")
+    @PostMapping(path = "guardarreserva")
     public String guardarreserva(@RequestBody ReservasModels guardar){
         reservasRepository.save(guardar);
-        return "Reserva Guardada Con Exito!!!";
+        return "Reserva Guardada con exito !!";
     }
 
 }
