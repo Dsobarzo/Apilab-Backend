@@ -141,6 +141,7 @@ public class EndpointsControllers {
         modificado.setFecha_reserva(modificar.getFecha_reserva());
         modificado.setBloque(modificar.getBloque());
         modificado.setEstado(modificar.getEstado());
+        reservasRepository.save(modificado);
         return "Reserva:"+ id +" Modificada con Exito!!!";
     }
 
