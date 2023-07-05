@@ -147,12 +147,5 @@ public class EndpointsControllers {
         return "Reserva:"+ id +" Modificada con Exito!!!";
     }
 
-    @GetMapping(path = "/obtenerreserva/{fecha_reserva}")
-    public List<ReservasModels> obtenerporfecha(@RequestParam ("fecha_reserva") @DateTimeFormat(pattern = "yyyy-mm-dd")LocalDate fecha){
-        List<ReservasModels> resultados = reservasRepository.findAll();
-        return reservasRepository.findAll();
-    }
-
-
 
 }
