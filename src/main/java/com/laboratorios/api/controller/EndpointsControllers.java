@@ -9,8 +9,10 @@ import com.laboratorios.api.repository.LaboratoriosRepository;
 import com.laboratorios.api.repository.ProfesoresRepository;
 import com.laboratorios.api.repository.ReservasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -143,6 +145,12 @@ public class EndpointsControllers {
         modificado.setEstado(modificar.getEstado());
         reservasRepository.save(modificado);
         return "Reserva:"+ id +" Modificada con Exito!!!";
+    }
+
+    @GetMapping(path = "/obtenerreserva/fecha")
+    public List<ReservasModels> obtenerporfecha(@RequestParam ("fecha") @DateTimeFormat(pattern = "yyyy-mm-dd")LocalDate fecha){
+        List<ReservasModels> resultados = reservasRepository.findAll();
+        return reservasRepository.findAll();
     }
 
 
