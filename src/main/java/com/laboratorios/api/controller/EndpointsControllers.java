@@ -133,4 +133,17 @@ public class EndpointsControllers {
         return "Reserva Guardada con exito !!";
     }
 
+    @PutMapping(path = "modificarreserva/{id}")
+    public String modificarreserva(@PathVariable long id, @RequestBody ReservasModels modificar){
+        ReservasModels modificado = reservasRepository.findById(id).get();
+        modificado.setId_laboratorios(modificar.getId_laboratorios());
+        modificado.setId_profesores(modificar.getId_profesores());
+        modificado.setFecha_reserva(modificar.getFecha_reserva());
+        modificado.setBloque(modificar.getBloque());
+        modificado.setEstado(modificar.getEstado());
+        return "Reserva:"+ id +" Modificada con Exito!!!";
+    }
+
+
+
 }
